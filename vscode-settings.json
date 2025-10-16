@@ -35,8 +35,8 @@
     "python.createEnvironment.trigger": "off",
     "zenMode.centerLayout": true,
     "zenMode.hideLineNumbers": false,
-    "editor.cursorSurroundingLines": 100,
-    "editor.cursorSurroundingLinesStyle": "all",
+    // "editor.cursorSurroundingLines": 100,
+    // "editor.cursorSurroundingLinesStyle": "all",
     "workbench.colorTheme": "Abyss",
-    "python.terminal.activateEnvironment": false
+    "python.terminal.activateEnvironment": true
 }
