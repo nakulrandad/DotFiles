@@ -1,0 +1,36 @@
+// Place your key bindings in this file to override the defaults
+[
+    {
+        "key": "ctrl+]",
+        "command": "workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+shift+-",
+        "command": "-workbench.action.navigateForward",
+        "when": "canNavigateForward"
+    },
+    {
+        "key": "ctrl+[",
+        "command": "workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "ctrl+-",
+        "command": "-workbench.action.navigateBack",
+        "when": "canNavigateBack"
+    },
+    {
+        "key": "alt+l",
+        "command": "extension.jumpy-line"
+    },
+    {
+        "key": "alt+w",
+        "command": "extension.jumpy-word"
+    },
+    {
+        "key": "Escape",
+        "command": "extension.jumpy-exit",
+        "when": "editorTextFocus && jumpy.isJumpyMode"
+    }
+]
