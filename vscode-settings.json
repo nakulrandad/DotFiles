@@ -1,13 +1,17 @@
 {
     "editor.suggestSelection": "first",
     "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Abyss",
+    
     "git.enableSmartCommit": true,
     "git.confirmSync": false,
     "git.autofetch": true,
+    "explorer.confirmDelete": false,
+    
+    // Notebook related
     "workbench.editorAssociations": {
         "*.ipynb": "jupyter-notebook"
     },
-    "explorer.confirmDelete": false,
     "notebook.cellToolbarLocation": {
         "default": "right",
         "jupyter-notebook": "left"
@@ -29,14 +33,24 @@
         "notebook.source.fixAll": "explicit",
         "notebook.source.organizeImports": "explicit"
     },
+    
+    // Pylance related
     "python.analysis.autoFormatStrings": true,
+    "python.analysis.extraPaths": ["./src", "."],
+    "python.analysis.autoSearchPaths": true,
+    // For large projects
+    // "python.analysis.indexing": true,
+    // "python.analysis.packageIndexDepths": [
+    //     { "name": "", "depth": 3 }
+    // ],
+
     "autoDocstring.docstringFormat": "numpy",
     "interactiveWindow.executeWithShiftEnter": true,
     "python.createEnvironment.trigger": "off",
+    "python.terminal.activateEnvironment": true
+    
     "zenMode.centerLayout": true,
     "zenMode.hideLineNumbers": false,
-    // "editor.cursorSurroundingLines": 100,
+    "editor.cursorSurroundingLines": 100,
     // "editor.cursorSurroundingLinesStyle": "all",
-    "workbench.colorTheme": "Abyss",
-    "python.terminal.activateEnvironment": true
 }
