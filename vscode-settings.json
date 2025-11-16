@@ -47,7 +47,7 @@
     "autoDocstring.docstringFormat": "numpy",
     "interactiveWindow.executeWithShiftEnter": true,
     "python.createEnvironment.trigger": "off",
-    "python.terminal.activateEnvironment": true
+    "python.terminal.activateEnvironment": true,
     
     "zenMode.centerLayout": true,
     "zenMode.hideLineNumbers": false,
