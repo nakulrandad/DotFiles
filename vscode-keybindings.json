@@ -12,15 +12,10 @@
     },
     {
         "key": "alt+l",
-        "command": "extension.jumpy-line"
+        "command": "extension.aceJump.line"
     },
     {
-        "key": "alt+w",
-        "command": "extension.jumpy-word"
+        "key": "alt+j",
+        "command": "extension.aceJump.multiChar"
     },
-    {
-        "key": "Escape",
-        "command": "extension.jumpy-exit",
-        "when": "editorTextFocus && jumpy.isJumpyMode"
-    }
 ]
