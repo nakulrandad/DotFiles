@@ -110,45 +110,69 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-source $HOME/.local/bin/env
+[[ -f $HOME/.local/bin/env ]] && source $HOME/.local/bin/env
 
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init - bash)"
-eval "$(pyenv virtualenv-init -)"
+if command -v pyenv >/dev/null; then
+  eval "$(pyenv init -)"
+  if pyenv commands | grep -qx virtualenv-init; then
+    eval "$(pyenv virtualenv-init -)"
+  fi
+fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # fzf(Fuzzy Finder)
 # Enables Ctrl+R (History Search) and Ctrl+T (File Search)
-# Ubuntu 24.04 places the integration scripts here:
-if [ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]; then
+# Ubuntu places the integration scripts under /usr/share/doc/fzf/examples.
+# Homebrew places them under $(brew --prefix fzf)/shell.
+if [[ -t 0 && -t 1 ]]; then
+  if [[ -f /usr/share/doc/fzf/examples/key-bindings.zsh ]]; then
     source /usr/share/doc/fzf/examples/key-bindings.zsh
-fi
-if [ -f /usr/share/doc/fzf/examples/completion.zsh ]; then
+  fi
+  if [[ -f /usr/share/doc/fzf/examples/completion.zsh ]]; then
     source /usr/share/doc/fzf/examples/completion.zsh
+  fi
+  if command -v brew >/dev/null && [[ -d "$(brew --prefix fzf 2>/dev/null)/shell" ]]; then
+    source "$(brew --prefix fzf)/shell/key-bindings.zsh"
+    source "$(brew --prefix fzf)/shell/completion.zsh"
+  fi
 fi
 
 # Use 'bat' to preview files inside FZF (Super powerful!)
 # When you press Ctrl+T, you will see a preview of the file content on the right.
-export FZF_CTRL_T_OPTS="
-  --preview 'batcat -n --color=always --line-range :500 {}'
-  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
-
-# Bat
-alias cat="batcat -p"
+if command -v batcat >/dev/null; then
+  export FZF_CTRL_T_OPTS="
+    --preview 'batcat -n --color=always --line-range :500 {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+  alias cat="batcat -p"
+elif command -v bat >/dev/null; then
+  export FZF_CTRL_T_OPTS="
+    --preview 'bat -n --color=always --line-range :500 {}'
+    --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+  alias cat="bat -p"
+fi
 
 # Zoxide
-eval "$(zoxide init zsh --cmd cd)"
+if command -v zoxide >/dev/null; then
+  eval "$(zoxide init zsh --cmd cd)"
+fi
 
 # eza (Smarter 'ls')
 # Replaces 'ls' with 'eza', which has icons, git status, and better colors.
-alias ls="eza --icons=always"
-alias ll="eza -alF --icons=always --group-directories-first"  # Long list, hidden files
-alias lt="eza -aT --icons=always --group-directories-first -I '.git|node_modules|.venv'" # Tree view (ignores junk)
+if command -v eza >/dev/null; then
+  alias ls="eza --icons=always"
+  alias ll="eza -alF --icons=always --group-directories-first"  # Long list, hidden files
+  alias lt="eza -aT --icons=always --group-directories-first -I .git -I node_modules -I .venv" # Tree view (ignores junk)
+fi
 
 # Extra niceties
-alias ip="ip -c"  # Colorize IP address output
-alias update="sudo apt update && sudo apt upgrade -y"
+if command -v ip >/dev/null; then
+  alias ip="ip -c"  # Colorize IP address output
+fi
+if command -v apt >/dev/null; then
+  alias update="sudo apt update && sudo apt upgrade -y"
+fi
 alias ports="sudo lsof -i -P -n | grep LISTEN" # Quickly see what ports are open
