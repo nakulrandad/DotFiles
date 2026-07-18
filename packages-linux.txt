@@ -5,6 +5,7 @@ fzf
 git
 neovim
 pyenv
+ripgrep
 tmux
 zoxide
 zsh

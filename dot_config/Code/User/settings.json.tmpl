@@ -61,4 +61,5 @@
     "extensions.experimental.affinity": {
         "asvetliakov.vscode-neovim": 1
     },
+    "todo-tree.ripgrep": "{{ if eq .chezmoi.os "darwin" }}{{ if eq .chezmoi.arch "arm64" }}/opt/homebrew/bin/rg{{ else }}/usr/local/bin/rg{{ end }}{{ else }}/usr/bin/rg{{ end }}",
 }
