@@ -1,0 +1,64 @@
+{
+    "editor.suggestSelection": "first",
+    "editor.lineNumbers": "relative",
+    "workbench.iconTheme": "vscode-icons",
+    "workbench.colorTheme": "Dark Modern",
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "explorer.confirmDelete": false,
+    // Notebook related
+    "workbench.editorAssociations": {
+        "*.ipynb": "jupyter-notebook"
+    },
+    "notebook.cellToolbarLocation": {
+        "default": "right",
+        "jupyter-notebook": "left"
+    },
+    "editor.inlineSuggest.enabled": true,
+    "notebook.multiCursor.enabled": true,
+    "notebook.lineNumbers": "on",
+    "notebook.defaultFormatter": "charliermarsh.ruff",
+    "jupyter.interactiveWindow.textEditor.executeSelection": true,
+    "editor.formatOnSave": true,
+    "[python]": {
+        "editor.formatOnSave": true,
+        "editor.codeActionsOnSave": {
+            "source.fixAll": "explicit",
+            "source.organizeImports": "explicit"
+        },
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "notebook.formatOnSave.enabled": true,
+    "notebook.codeActionsOnSave": {
+        "notebook.source.fixAll": "explicit",
+        "notebook.source.organizeImports": "explicit"
+    },
+    // Pylance related
+    "python.analysis.autoFormatStrings": true,
+    "python.analysis.extraPaths": [
+        "./src",
+        "."
+    ],
+    "python.analysis.autoSearchPaths": true,
+    // For large projects
+    // "python.analysis.indexing": true,
+    // "python.analysis.packageIndexDepths": [
+    //     { "name": "", "depth": 3 }
+    // ],
+    "autoDocstring.docstringFormat": "numpy",
+    "interactiveWindow.executeWithShiftEnter": true,
+    "python.createEnvironment.trigger": "off",
+    "python.terminal.activateEnvironment": true,
+    // Zen mode related
+    "zenMode.centerLayout": true,
+    "zenMode.hideLineNumbers": false,
+    "editor.cursorSurroundingLines": 100,
+    // "editor.cursorSurroundingLinesStyle": "all",
+    // Neovim related
+    "vscode-neovim.neovimExecutablePaths.darwin": "{{ if eq .chezmoi.arch "arm64" }}/opt/homebrew/bin/nvim{{ else }}/usr/local/bin/nvim{{ end }}",
+    "vscode-neovim.neovimExecutablePaths.linux": "{{ .chezmoi.homeDir }}/.local/bin/nvim",
+    "extensions.experimental.affinity": {
+        "asvetliakov.vscode-neovim": 1
+    },
+}

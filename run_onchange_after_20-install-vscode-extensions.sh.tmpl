@@ -1,0 +1,16 @@
+#!/bin/sh
+set -eu
+
+# vscode-extensions.txt sha256: {{ include "vscode-extensions.txt" | sha256sum }}
+
+if ! command -v code >/dev/null 2>&1; then
+  echo "Skipping VS Code extension install: code command is not on PATH."
+  exit 0
+fi
+
+while IFS= read -r extension; do
+  case "$extension" in
+    ""|\#*) continue ;;
+  esac
+  code --install-extension "$extension" --force
+done < "{{ .chezmoi.sourceDir }}/vscode-extensions.txt"

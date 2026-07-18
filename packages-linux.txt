@@ -1,0 +1,10 @@
+bat
+curl
+eza
+fzf
+git
+neovim
+pyenv
+tmux
+zoxide
+zsh

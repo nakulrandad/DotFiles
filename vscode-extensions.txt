@@ -1,0 +1,17 @@
+aaron-bond.better-comments
+alefragnani.bookmarks
+charliermarsh.ruff
+gruntfuggly.todo-tree
+kevinrose.vsc-python-indent
+ms-python.black-formatter
+ms-python.debugpy
+ms-python.python
+ms-python.vscode-pylance
+ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
+ms-toolsai.jupyter-renderers
+ms-toolsai.vscode-jupyter-cell-tags
+ms-toolsai.vscode-jupyter-slideshow
+ms-vscode.remote-explorer
+vscode-icons-team.vscode-icons
+asvetliakov.vscode-neovim

@@ -1,0 +1,34 @@
+#!/bin/sh
+set -eu
+
+if [ ! -d "$HOME/.oh-my-zsh" ]; then
+  echo "Skipping zsh plugin install: $HOME/.oh-my-zsh does not exist."
+  exit 0
+fi
+
+if ! command -v git >/dev/null 2>&1; then
+  echo "Skipping zsh plugin install: git is not installed."
+  exit 0
+fi
+
+ZSH_CUSTOM="${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}"
+PLUGIN_DIR="$ZSH_CUSTOM/plugins"
+
+mkdir -p "$PLUGIN_DIR"
+
+install_plugin() {
+  name="$1"
+  repo="$2"
+  dest="$PLUGIN_DIR/$name"
+
+  if [ -d "$dest/.git" ]; then
+    git -C "$dest" pull --ff-only
+  elif [ ! -e "$dest" ]; then
+    git clone "$repo" "$dest"
+  else
+    echo "Skipping $name: $dest exists but is not a git checkout."
+  fi
+}
+
+install_plugin "zsh-autosuggestions" "https://github.com/zsh-users/zsh-autosuggestions.git"
+install_plugin "zsh-syntax-highlighting" "https://github.com/zsh-users/zsh-syntax-highlighting.git"

@@ -11,11 +11,7 @@
         "when": "canNavigateBack"
     },
     {
-        "key": "alt+l",
-        "command": "extension.aceJump.line"
-    },
-    {
-        "key": "alt+j",
-        "command": "extension.aceJump.multiChar"
-    },
+        "key": "ctrl+alt+`",
+        "command": "workbench.action.createTerminalEditor"
+    }
 ]
