@@ -8,9 +8,17 @@ if ! command -v code >/dev/null 2>&1; then
   exit 0
 fi
 
+installed_extensions="$(code --list-extensions | tr '[:upper:]' '[:lower:]')"
+
 while IFS= read -r extension; do
   case "$extension" in
     ""|\#*) continue ;;
   esac
-  code --install-extension "$extension" --force
+  extension_lower="$(printf '%s' "$extension" | tr '[:upper:]' '[:lower:]')"
+  if printf '%s\n' "$installed_extensions" | grep -Fxq "$extension_lower"; then
+    echo "Already installed: $extension"
+    continue
+  fi
+  echo "Installing: $extension"
+  code --install-extension "$extension"
 done < "{{ .chezmoi.sourceDir }}/vscode-extensions.txt"
