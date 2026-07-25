@@ -1,4 +1,4 @@
-// Place your key bindings in this file to override the defaults
+// Reference only. VS Code owns each machine's active keybindings.json.
 [
     {
         "key": "ctrl+]",

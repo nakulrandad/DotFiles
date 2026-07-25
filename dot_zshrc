@@ -192,3 +192,6 @@ if command -v apt >/dev/null; then
   alias update="sudo apt update && sudo apt upgrade -y"
 fi
 alias ports="sudo lsof -i -P -n | grep LISTEN" # Quickly see what ports are open
+
+# Machine-local zsh customizations. This file is intentionally not managed by chezmoi.
+[[ -f "$HOME/.zshrc.local" ]] && source "$HOME/.zshrc.local"

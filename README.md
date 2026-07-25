@@ -8,7 +8,7 @@ Personal dotfiles managed with [chezmoi](https://www.chezmoi.io/).
 - `~/.tmux.conf`
 - `~/.gitconfig`
 - `~/.config/nvim/init.lua`
-- VS Code user settings and keybindings
+- VS Code user settings
 
 VS Code config is stored in both platform-specific locations:
 
@@ -16,6 +16,17 @@ VS Code config is stored in both platform-specific locations:
 - Linux: `~/.config/Code/User/`
 
 `.chezmoiignore` keeps only the current OS path active during `chezmoi apply`.
+VS Code keybindings are not managed by chezmoi. `vscode-keybindings.reference.json` is kept as a reference only, so each machine can keep local keybindings.
+
+## Machine-Local Customization
+
+For shell commands, aliases, and environment variables that should exist on only one machine, create:
+
+```sh
+~/.zshrc.local
+```
+
+`~/.zshrc` sources this file when it exists. Do not commit machine-specific shell commands to the shared `dot_zshrc`.
 
 ## Manifests
 
