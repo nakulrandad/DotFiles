@@ -29,6 +29,8 @@ vim.pack.add({ 'https://github.com/kylechui/nvim-surround' })
 require('nvim-surround').setup()
 
 if vim.g.vscode then
+  vim.g.clipboard = vim.g.vscode_clipboard
+
   local vscode = require('vscode')
   local function action(name)
     return function() vscode.action(name) end
